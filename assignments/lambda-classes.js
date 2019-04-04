@@ -23,7 +23,7 @@ class Instructor extends Person {
         console.log(`Today we are learning about ${this.subject}`);
     };
     grade(student, subject) {
-        console.log(`${student.name} receives a perfect score on ${this.subject}`);
+        console.log(`${student.name} receives a perfect score on ${subject}`);
     };
 }
 
@@ -52,9 +52,65 @@ class ProjectManager extends Instructor {
         this.favInstructor = pmAttributes.favInstructor;
     }
     standup(channel) {
-        console.log(`${this.name} announces to ${channel}, @channel standy times!`​​​​​);
+        console.log(`${this.name} announces to ${channel}, @channel standy times!`);
     };
-    debugsCode(studentObj, subject) {
-        console.log(`${this.name} debugs ${student.name}'s code on ${subject}.`)
-    }
+    debugsCode(student, subject) {
+        console.log(`${this.name} debugs ${student.name}'s code on ${subject}.`);
+    };
 }
+
+
+const jess = new Instructor({
+    name: 'Jess',
+    location: 'Columbus',
+    age: 32,
+    gender: 'F',
+    favLanguage: 'Javascript',
+    specialty: 'back-end',
+    catchPhrase: 'Cool. Cool, cool, cool.'
+});
+
+const cory = new Student({
+    name: 'Cory',
+    location: 'Burbank',
+    age: '27',
+    gender: 'M',
+    previousBackground: 'gamer',
+    className: 'Web19',
+    favSubjects: ['Html', 'PHP', 'Ruby']
+
+});
+
+const tim = new ProjectManager({
+    name: 'Tim',
+    location: 'Fresno',
+    age: 50,
+    gender: 'M',
+    favLanguage: 'CSS',
+    specialty: 'design and front-end',
+    catchPhrase: 'Skidoosh',
+    gradClassName: 'UX2',
+    favInstructor: 'Christijan'
+});
+
+const sara = new Student({
+    name: 'Sara',
+    location: 'Minneapolis',
+    age: 38,
+    gender: 'F',
+    previousBackground: 'graphic designer',
+    className: 'WebDev4',
+    favSubjects: ['CSS', 'Html', 'React']
+});
+
+sara.speak();
+jess.speak();
+cory.speak();
+tim.speak();
+
+tim.debugsCode(cory, 'html');
+sara.PRAssignment('javascript IV');
+jess.demo('CSS');
+tim.grade(cory, 'html');
+cory.listsSubjects();
+tim.standup('timchannel');
