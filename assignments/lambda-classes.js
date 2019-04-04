@@ -20,10 +20,10 @@ class Instructor extends Person {
         this.catchPhrase = instAttributes.catchPhrase;
     }
     demo(subject) {
-        console.log(`Today we are learning about ${this.subject}`);
+        console.log(`Today we are learning about ${subject}.`);
     };
     grade(student, subject) {
-        console.log(`${student.name} receives a perfect score on ${subject}`);
+        console.log(`${student.name} receives a perfect score on ${subject}.`);
     };
     calculateGrade(student) {
         let rando = Math.floor(Math.random() * Math.floor(10));
@@ -136,4 +136,4 @@ const sara = new Student({
 // console.log(jess.calculateGrade(sara));
 // sara.graduate(jess);
 // cory.graduate(tim);
-console.log(tim.calculateGrade(cory));
+// console.log(tim.calculateGrade(cory));
