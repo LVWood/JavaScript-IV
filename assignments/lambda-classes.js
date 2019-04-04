@@ -25,6 +25,14 @@ class Instructor extends Person {
     grade(student, subject) {
         console.log(`${student.name} receives a perfect score on ${subject}`);
     };
+    calculateGrade(student) {
+        let rando = Math.floor(Math.random() * Math.floor(10));
+        if (rando %2 === 0) {
+            return student.grade = (student.grade - rando);
+        } else if (rando %2 !== 0) {
+            return student.grade = (student.grade + rando);
+        }
+    };
 }
 
 class Student extends Person {
@@ -33,15 +41,24 @@ class Student extends Person {
         this.previousBackground = studAttributes.previousBackground;
         this.className = studAttributes.className;
         this.favSubjects = studAttributes.favSubjects;
+        this.grade = studAttributes.grade;
     }
     listsSubjects() {
-        console.log(this.favSubjects);
+        console.log(this.favSubjects.toString());
     };
     PRAssignment(subject) {
         console.log(`${this.name} has submitted a PR for ${subject}.`);
     };
     sprintChallenge(subject) {
         console.log(`${this.name} has begun sprint challenge on ${subject}.`);
+    };
+    graduate(teacher) {
+        if (this.grade >= 71) {
+            console.log(`${this.name} is ready to graduate!`);
+        } else if (this.grade < 71) {
+            console.log(`${this.name} needs some more flex-time.`);
+            return teacher.calculateGrade(this.name);
+        }
     };
 }
 
@@ -77,8 +94,8 @@ const cory = new Student({
     gender: 'M',
     previousBackground: 'gamer',
     className: 'Web19',
-    favSubjects: ['Html', 'PHP', 'Ruby']
-
+    favSubjects: ['Html', 'PHP', 'Ruby'],
+    grade: 80
 });
 
 const tim = new ProjectManager({
@@ -100,17 +117,23 @@ const sara = new Student({
     gender: 'F',
     previousBackground: 'graphic designer',
     className: 'WebDev4',
-    favSubjects: ['CSS', 'Html', 'React']
+    favSubjects: ['CSS', 'Html', 'React'],
+    grade: 89
 });
 
-sara.speak();
-jess.speak();
-cory.speak();
-tim.speak();
+// sara.speak();
+// jess.speak();
+// cory.speak();
+// tim.speak();
 
-tim.debugsCode(cory, 'html');
-sara.PRAssignment('javascript IV');
-jess.demo('CSS');
-tim.grade(cory, 'html');
-cory.listsSubjects();
-tim.standup('timchannel');
+// tim.debugsCode(cory, 'html');
+// sara.PRAssignment('javascript IV');
+// jess.demo('CSS');
+// tim.grade(cory, 'html');
+// cory.listsSubjects();
+// tim.standup('timchannel');
+
+// console.log(jess.calculateGrade(sara));
+// sara.graduate(jess);
+// cory.graduate(tim);
+console.log(tim.calculateGrade(cory));
